@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from "express";
 import status from "http-status";
-import { AppError } from "../utils/appErr.util";
+import { AppError } from "../utils/appErr-util";
 
 export const errHandlerMiddleware: ErrorRequestHandler = (err, req, res, next):any => {
    if (err instanceof SyntaxError) {
