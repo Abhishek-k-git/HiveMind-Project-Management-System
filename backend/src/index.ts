@@ -5,6 +5,8 @@ import session from "cookie-session";
 import config from "./configs/env-config";
 
 import connectMongo from "./configs/db-config";
+import { errHandlerMiddleware } from "./middlewares/errHandler-middleware";
+import { asyncHandler } from "./middlewares/asyncHandler-middleware";
 
 const app = express();
 
@@ -26,9 +28,13 @@ app.use(
    })
 )
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-   res.status(200).json({message: "Hello from the server!"});
-});
+app.get("/", asyncHandler(
+   async (req: Request, res: Response, next: NextFunction) => {
+      res.status(200).json({message: "Hello from the server!"});
+   }
+));
+
+app.use(errHandlerMiddleware);
 
 app.listen(config.PORT, async () => {
    console.log(`Server is listening on port ${config.PORT} in ${config.NODE_ENV} mode`);
