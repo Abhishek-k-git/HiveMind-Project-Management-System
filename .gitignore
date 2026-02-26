@@ -1,0 +1,85 @@
+#######################################
+# Dependencies
+#######################################
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+#######################################
+# Build outputs
+#######################################
+dist/
+build/
+frontend/dist/
+frontend/build/
+backend/dist/
+backend/build/
+
+#######################################
+# Next.js / Vite / React build cache
+#######################################
+frontend/.next/
+frontend/out/
+frontend/.vite/
+frontend/.cache/
+
+#######################################
+# TypeScript
+#######################################
+*.tsbuildinfo
+
+#######################################
+# Environment variables
+#######################################
+.env
+.env.*
+frontend/.env*
+backend/.env*
+
+#######################################
+# Logs
+#######################################
+*.log
+logs/
+
+#######################################
+# Uploads / temp backend files
+#######################################
+backend/uploads/
+backend/tmp/
+backend/public/uploads/
+
+#######################################
+# Coverage / testing
+#######################################
+coverage/
+frontend/coverage/
+backend/coverage/
+
+#######################################
+# IDE / Editor files
+#######################################
+.vscode/
+.idea/
+*.swp
+*.swo
+
+#######################################
+# OS junk
+#######################################
+.DS_Store
+Thumbs.db
+
+#######################################
+# Cache files
+#######################################
+.cache/
+*.cache
+
+#######################################
+# Optional: ignore lock files
+# (REMOVE these lines if you want reproducible installs)
+#######################################
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
