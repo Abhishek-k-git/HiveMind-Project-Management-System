@@ -4,6 +4,7 @@
   "description": "Backend for project management application build with Node.js, Express, and MongoDB",
   "main": "index.js",
   "scripts": {
+    "seed": "ts-node src/seeders/permission-seeder.ts",
     "dev": "ts-node-dev --files src/index.ts",
     "build": "tsc && cp /package.json ./dist",
     "start": "node dist/index.js"
