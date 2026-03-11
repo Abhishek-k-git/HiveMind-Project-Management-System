@@ -1,10 +1,10 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { RoleDocument } from "./permission-model";
+import {PermissionDocument} from "./permission-model";
 
 export interface MemberDocument extends Document {
   userId: mongoose.Types.ObjectId;
   workspaceId: mongoose.Types.ObjectId;
-  role: RoleDocument;
+  role: PermissionDocument;
   joinedAt: Date;
 }
 

@@ -7,6 +7,9 @@ import config from "./configs/env-config";
 import connectMongo from "./configs/db-config";
 import { errHandlerMiddleware } from "./middlewares/errHandler-middleware";
 import { asyncHandler } from "./middlewares/asyncHandler-middleware";
+import passport from "passport";
+import authRoutes from "./routes/auth-route";
+import "./configs/passport-config";
 
 const app = express();
 
@@ -14,7 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(
    cors({
-      origin: config.BASE_PATH
+      origin: config.FRONTEND_URL,
+      credentials: true,
    })
 )
 app.use(
@@ -27,12 +31,24 @@ app.use(
       sameSite: "lax",
    })
 )
+app.use((req: Request, res: Response, next: NextFunction) => {
+   if (req.session && !req.session.regenerate) {
+      req.session.regenerate = (cb: any) => cb();
+   }
+   if (req.session && !req.session.save) {
+      req.session.save = (cb: any) => cb();
+   }
+   next();
+});
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", asyncHandler(
    async (req: Request, res: Response, next: NextFunction) => {
       res.status(200).json({message: "Hello from the server!"});
    }
 ));
+app.use(`${config.BASE_PATH}/auth`, authRoutes);
 
 app.use(errHandlerMiddleware);
 
