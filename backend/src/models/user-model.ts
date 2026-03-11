@@ -6,11 +6,11 @@ export interface UserDocument extends Document {
     email: string;
     password?: string;
     profilePicture?: string;
-    currentWorkspace?: mongoose.Types.ObjectId;
     isActive: boolean;
     lastLogin?: Date;
     createdAt: Date;
     updatedAt: Date;
+    currentWorkspace: mongoose.Types.ObjectId | null;
     comparePassword: (value: string) => Promise<boolean>;
     omitPassword(): Omit<UserDocument, "password">;
 }

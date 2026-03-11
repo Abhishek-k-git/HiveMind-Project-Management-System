@@ -10,6 +10,9 @@ import { asyncHandler } from "./middlewares/asyncHandler-middleware";
 import passport from "passport";
 import authRoutes from "./routes/auth-route";
 import "./configs/passport-config";
+import isAuthenticated from "./middlewares/isAuthenticated-middleware";
+import userRoutes from "./routes/user-route";
+import workspaceRoutes from "./routes/workspace-route";
 
 const app = express();
 
@@ -43,12 +46,13 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", asyncHandler(
-   async (req: Request, res: Response, next: NextFunction) => {
-      res.status(200).json({message: "Hello from the server!"});
-   }
-));
-app.use(`${config.BASE_PATH}/auth`, authRoutes);
+// app.get("/", asyncHandler(
+//    async (req: Request, res: Response, next: NextFunction) => {
+//       res.status(200).json({message: "Hello from the server!"});
+//    }
+// ));
+app.use('/api/auth', authRoutes);
+app.use('/api/users', isAuthenticated, userRoutes);
 
 app.use(errHandlerMiddleware);
 
