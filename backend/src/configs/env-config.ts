@@ -1,10 +1,9 @@
 import { getEnv } from "../utils/getEnv-util";
 
 const config = () => ({
-   PORT: getEnv("PORT", "8000"),
+   PORT: getEnv("PORT", "8080"),
    NODE_ENV: getEnv("NODE_ENV", "development"),
-   DATABASE_URL: getEnv("DATABASE_URL", ""), 
-   BASE_PATH: getEnv("BASE_PATH", "/api"),
+   DATABASE_URL: getEnv("DATABASE_URL", ""),
 
    SESSION_SECRET: getEnv("SESSION_SECRET"),
    SESSION_EXPIRES_IN: getEnv("SESSION_EXPIRES_IN"),

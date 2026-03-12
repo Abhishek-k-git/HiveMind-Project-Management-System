@@ -6,7 +6,7 @@ import config from "./configs/env-config";
 
 import connectMongo from "./configs/db-config";
 import { errHandlerMiddleware } from "./middlewares/errHandler-middleware";
-import { asyncHandler } from "./middlewares/asyncHandler-middleware";
+// import { asyncHandler } from "./middlewares/asyncHandler-middleware";
 import passport from "passport";
 import authRoutes from "./routes/auth-route";
 import "./configs/passport-config";
@@ -53,6 +53,7 @@ app.use(passport.session());
 // ));
 app.use('/api/auth', authRoutes);
 app.use('/api/users', isAuthenticated, userRoutes);
+app.use('/api/workspaces', isAuthenticated, workspaceRoutes);
 
 app.use(errHandlerMiddleware);
 
