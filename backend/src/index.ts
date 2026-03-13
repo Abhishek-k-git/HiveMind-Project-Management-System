@@ -13,6 +13,8 @@ import "./configs/passport-config";
 import isAuthenticated from "./middlewares/isAuthenticated-middleware";
 import userRoutes from "./routes/user-route";
 import workspaceRoutes from "./routes/workspace-route";
+import memberRoutes from "./routes/member-route";
+import projectRoutes from "./routes/project-route";
 
 const app = express();
 
@@ -54,6 +56,8 @@ app.use(passport.session());
 app.use('/api/auth', authRoutes);
 app.use('/api/users', isAuthenticated, userRoutes);
 app.use('/api/workspaces', isAuthenticated, workspaceRoutes);
+app.use('/api/members', isAuthenticated, memberRoutes);
+app.use('/api/projects', isAuthenticated, projectRoutes);
 
 app.use(errHandlerMiddleware);
 
