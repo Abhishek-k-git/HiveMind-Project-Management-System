@@ -82,7 +82,7 @@ const SignIn = () => {
                     className="flex items-center gap-2 self-center font-medium"
                 >
                     <Logo />
-                    Team Sync.
+                    HiveMind
                 </Link>
                 <div className="flex flex-col gap-6">
                     <Card>
