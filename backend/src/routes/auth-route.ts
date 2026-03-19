@@ -12,16 +12,18 @@ authRoutes.post("/login", loginUserController);
 authRoutes.post("/register", registerUserController);
 authRoutes.post("/logout", logoutUserController);
 
-authRoutes.get("/google", 
-   passport.authenticate("google", {
-      scope: ["profile", "email"]
-   })
+authRoutes.get(
+    "/google",
+    passport.authenticate("google", {
+        scope: ["profile", "email"],
+    }),
 );
-authRoutes.get("/google/callback", 
-   passport.authenticate("google", {
-      failureRedirect: `${config.FRONTEND_GOOGLE_CALLBACK_URL}?status=failure`
-   }), 
-   googleLoginCallbackController
+authRoutes.get(
+    "/google/callback",
+    passport.authenticate("google", {
+        failureRedirect: `${config.FRONTEND_URL}/${config.FRONTEND_GOOGLE_CALLBACK_URL}?status=failure`,
+    }),
+    googleLoginCallbackController,
 );
 
 export default authRoutes;
