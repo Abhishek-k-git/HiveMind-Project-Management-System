@@ -16,12 +16,14 @@ authRoutes.get(
     "/google",
     passport.authenticate("google", {
         scope: ["profile", "email"],
+        session: false,
     }),
 );
 authRoutes.get(
     "/google/callback",
     passport.authenticate("google", {
         failureRedirect: `${config.FRONTEND_URL}/${config.FRONTEND_GOOGLE_CALLBACK_URL}?status=failure`,
+        session: false,
     }),
     googleLoginCallbackController,
 );
