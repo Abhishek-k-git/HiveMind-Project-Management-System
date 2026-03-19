@@ -35,7 +35,6 @@ passport.use(
    async (req: Request, accessToken, refreshToken, profile, done) => {
       try {
          const { email, sub: googleId, picture } = profile._json;
-         console.log("Google profile: ", profile);
          if (!googleId) {
             throw new NotFoundException("Google ID not found in profile");
          }

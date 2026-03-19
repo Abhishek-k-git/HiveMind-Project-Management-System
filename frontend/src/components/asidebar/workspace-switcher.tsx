@@ -86,7 +86,7 @@ export function WorkspaceSwitcher() {
                             >
                                 {activeWorkspace ? (
                                     <>
-                                        <div className="flex aspect-square size-8 items-center font-semibold justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                                        <div className="flex aspect-square size-8 items-center font-semibold justify-center rounded-full bg-sidebar-primary-foreground text-sidebar-primary border">
                                             {activeWorkspace?.name
                                                 ?.split(" ")?.[0]
                                                 ?.charAt(0)}

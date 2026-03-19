@@ -35,7 +35,7 @@ export default function CreateProjectForm({
     const queryClient = useQueryClient();
     const workspaceId = useWorkspaceId();
 
-    const [emoji, setEmoji] = useState("📊");
+    const [emoji, setEmoji] = useState("🏢");
 
     const { mutate, isPending } = useMutation({
         mutationFn: createProjectMutationFn,
